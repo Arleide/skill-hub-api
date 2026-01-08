@@ -1,4 +1,6 @@
 package com.techdevbrazil.skillhubapi.enums;
 
-public class StatusSolicitacao {
+public enum StatusSolicitacao {
+
+    ABERTA, CONFIRMADA, ENCERRADA;
 }

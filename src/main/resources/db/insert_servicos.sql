@@ -1,0 +1,35 @@
+INSERT INTO skillhub.servicos (nome, descricao, ativo, data_criacao, data_atualizacao)
+VALUES ('Limpeza de Computador', 'Limpeza interna e externa de computadores e notebooks', TRUE, NOW(), NOW()),
+       ('Formatação de Computador', 'Formatação completa com instalação de sistema operacional', TRUE, NOW(), NOW()),
+       ('Instalação de Sistema Operacional', 'Instalação e configuração de Windows ou Linux', TRUE, NOW(), NOW()),
+       ('Instalação de Programas', 'Instalação de softwares essenciais e específicos', TRUE, NOW(), NOW()),
+       ('Manutenção Preventiva', 'Manutenção preventiva para evitar falhas no sistema', TRUE, NOW(), NOW()),
+       ('Manutenção Corretiva', 'Correção de problemas de hardware e software', TRUE, NOW(), NOW()),
+       ('Upgrade de Hardware', 'Atualização de memória, SSD, HD e outros componentes', TRUE, NOW(), NOW()),
+       ('Backup de Dados', 'Backup e restauração de dados importantes', TRUE, NOW(), NOW()),
+       ('Recuperação de Dados', 'Recuperação de arquivos perdidos ou corrompidos', TRUE, NOW(), NOW()),
+       ('Remoção de Vírus', 'Remoção de vírus, malwares e spywares', TRUE, NOW(), NOW()),
+
+       ('Configuração de Redes', 'Configuração de redes cabeadas e Wi-Fi', TRUE, NOW(), NOW()),
+       ('Configuração de Roteadores', 'Instalação e configuração de roteadores', TRUE, NOW(), NOW()),
+       ('Suporte Técnico Remoto', 'Atendimento e suporte técnico à distância', TRUE, NOW(), NOW()),
+       ('Suporte Técnico Presencial', 'Atendimento técnico presencial', TRUE, NOW(), NOW()),
+       ('Consultoria em TI', 'Consultoria para soluções e melhorias em TI', TRUE, NOW(), NOW()),
+       ('Criação de Sites', 'Desenvolvimento de sites institucionais', TRUE, NOW(), NOW()),
+       ('Web Design', 'Criação de layouts e design para sites', TRUE, NOW(), NOW()),
+       ('Desenvolvimento de Sistemas', 'Desenvolvimento de sistemas web e desktop', TRUE, NOW(), NOW()),
+       ('Criação de APIs', 'Desenvolvimento de APIs REST', TRUE, NOW(), NOW()),
+       ('Integração de Sistemas', 'Integração entre sistemas e serviços', TRUE, NOW(), NOW()),
+
+       ('Automação de Processos', 'Automação de rotinas e processos empresariais', TRUE, NOW(), NOW()),
+       ('Configuração de Servidores', 'Instalação e configuração de servidores', TRUE, NOW(), NOW()),
+       ('Hospedagem de Sites', 'Configuração e gerenciamento de hospedagem', TRUE, NOW(), NOW()),
+       ('Gerenciamento de Banco de Dados', 'Administração e otimização de bancos de dados', TRUE, NOW(), NOW()),
+       ('Modelagem de Banco de Dados', 'Criação e modelagem de bancos de dados', TRUE, NOW(), NOW()),
+       ('Treinamento em Informática', 'Treinamento básico e avançado em informática', TRUE, NOW(), NOW()),
+       ('Treinamento em Programação', 'Aulas e treinamentos em programação', TRUE, NOW(), NOW()),
+       ('Configuração de E-mail Corporativo', 'Configuração de e-mails profissionais', TRUE, NOW(), NOW()),
+       ('Segurança da Informação', 'Análise e implementação de segurança digital', TRUE, NOW(), NOW()),
+       ('Auditoria de Sistemas', 'Auditoria e análise de sistemas e infraestrutura', TRUE, NOW(), NOW());
+
+commit;

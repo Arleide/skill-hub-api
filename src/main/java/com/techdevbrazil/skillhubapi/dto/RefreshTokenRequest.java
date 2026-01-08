@@ -1,4 +1,3 @@
 package com.techdevbrazil.skillhubapi.dto;
 
-public class RefreshTokenRequest {
-}
+public record RefreshTokenRequest(String refreshToken) {}

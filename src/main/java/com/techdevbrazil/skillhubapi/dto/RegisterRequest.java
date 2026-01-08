@@ -1,4 +1,8 @@
 package com.techdevbrazil.skillhubapi.dto;
 
-public class RegisterRequest {
-}
+
+public record RegisterRequest(
+        String nome,
+        String email,
+        String senha
+) {}
