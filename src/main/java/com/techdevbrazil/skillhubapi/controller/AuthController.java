@@ -1,4 +1,4 @@
-package com.techdevbrazil.skillhubapi;
+package com.techdevbrazil.skillhubapi.controller;
 
 import com.techdevbrazil.skillhubapi.dto.JwtResponse;
 import com.techdevbrazil.skillhubapi.dto.LoginRequest;
