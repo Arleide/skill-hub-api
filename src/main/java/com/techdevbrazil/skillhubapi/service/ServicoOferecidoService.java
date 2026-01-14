@@ -23,6 +23,10 @@ public class ServicoOferecidoService {
         return servicoOferecidoRepository.findById(id).get();
     }
 
+    public List<ServicoOferecido> findByUsuarioId(Long usuarioId){
+        return servicoOferecidoRepository.findByUsuarioId(usuarioId);
+    }
+
     public ServicoOferecido save(ServicoOferecido servicoOferecido){
         return  servicoOferecidoRepository.save(servicoOferecido);
     }

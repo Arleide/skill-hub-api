@@ -1,11 +1,13 @@
 package com.techdevbrazil.skillhubapi.controller;
 
 import com.techdevbrazil.skillhubapi.entity.ServicoOferecido;
+import com.techdevbrazil.skillhubapi.security.CustomUserDetails;
 import com.techdevbrazil.skillhubapi.service.ServicoOferecidoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +36,12 @@ public class ServicoOferecidoController {
     @PostMapping
     public ResponseEntity<ServicoOferecido> save(@RequestBody ServicoOferecido servicoOferecido) {
         return ResponseEntity.status(HttpStatus.CREATED).body(servicoOferecidoService.save(servicoOferecido));
+    }
+
+    @GetMapping("/meus")
+    public ResponseEntity<List<ServicoOferecido>> meusServicos(Authentication authentication) {
+        CustomUserDetails user = (CustomUserDetails) authentication.getPrincipal();
+        return ResponseEntity.ok(servicoOferecidoService.findByUsuarioId(user.getId()));
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
