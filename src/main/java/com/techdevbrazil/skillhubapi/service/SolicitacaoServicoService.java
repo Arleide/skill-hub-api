@@ -19,6 +19,14 @@ public class SolicitacaoServicoService {
         return solicitacaoServicoRepository.findAll();
     }
 
+    public List<SolicitacaoServico> findAllSent(Long usuarioId) {
+        return solicitacaoServicoRepository.findByUsuarioSolicitanteId(usuarioId);
+    }
+
+    public List<SolicitacaoServico> findAllReceived(Long usuarioId) {
+        return solicitacaoServicoRepository.findByUsuarioPrestadorId(usuarioId);
+    }
+
     public SolicitacaoServico findById(Long id) {
         return solicitacaoServicoRepository.findById(id).get();
     }

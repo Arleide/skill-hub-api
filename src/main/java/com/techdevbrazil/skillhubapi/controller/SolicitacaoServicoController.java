@@ -1,10 +1,12 @@
 package com.techdevbrazil.skillhubapi.controller;
 
 import com.techdevbrazil.skillhubapi.entity.SolicitacaoServico;
+import com.techdevbrazil.skillhubapi.security.CustomUserDetails;
 import com.techdevbrazil.skillhubapi.service.SolicitacaoServicoService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +26,19 @@ public class SolicitacaoServicoController {
     public ResponseEntity<List<SolicitacaoServico>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(solicitacaoServicoService.findAll());
     }
+
+    @GetMapping("/enviadas")
+    public ResponseEntity<List<SolicitacaoServico>> findAllSent(Authentication authentication) {
+        CustomUserDetails user = (CustomUserDetails) authentication.getPrincipal();
+        return ResponseEntity.status(HttpStatus.OK).body(solicitacaoServicoService.findAllSent(user.getId()));
+    }
+
+    @GetMapping("/recebidas")
+    public ResponseEntity<List<SolicitacaoServico>> findAllReceived(Authentication authentication) {
+        CustomUserDetails user = (CustomUserDetails) authentication.getPrincipal();
+        return ResponseEntity.status(HttpStatus.OK).body(solicitacaoServicoService.findAllReceived(user.getId()));
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<SolicitacaoServico> findById(@PathVariable Long id) {

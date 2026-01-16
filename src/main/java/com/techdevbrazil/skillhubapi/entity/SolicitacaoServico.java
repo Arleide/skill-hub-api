@@ -25,7 +25,7 @@ public class SolicitacaoServico {
     private Usuario usuarioSolicitante;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_ptrstador_id")
+    @JoinColumn(name = "usuario_prestador_id")
     private Usuario usuarioPrestador;
 
     @ManyToOne
