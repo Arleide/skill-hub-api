@@ -1,5 +1,6 @@
 package com.techdevbrazil.skillhubapi.controller;
 
+import com.techdevbrazil.skillhubapi.dto.AtualizarStatusSolicitacaoDTO;
 import com.techdevbrazil.skillhubapi.entity.SolicitacaoServico;
 import com.techdevbrazil.skillhubapi.security.CustomUserDetails;
 import com.techdevbrazil.skillhubapi.service.SolicitacaoServicoService;
@@ -48,6 +49,15 @@ public class SolicitacaoServicoController {
     @PostMapping
     public ResponseEntity<SolicitacaoServico> save(@RequestBody SolicitacaoServico solicitacaoServico) {
         return ResponseEntity.status(HttpStatus.CREATED).body(solicitacaoServicoService.save(solicitacaoServico));
+    }
+
+    @PutMapping("/{id}/status")
+    public ResponseEntity<SolicitacaoServico> updateStatus(
+            @PathVariable Long id,
+            @RequestBody AtualizarStatusSolicitacaoDTO dto) {
+        return ResponseEntity.ok(
+                solicitacaoServicoService.updateStatus(id, dto.getStatus())
+        );
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)

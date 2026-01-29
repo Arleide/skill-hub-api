@@ -32,6 +32,15 @@ public class AvaliacaoController {
             return ResponseEntity.ok(avaliacaoService.findById(id));
     }
 
+    @GetMapping("/solicitacao/{solicitacaoId}")
+    public ResponseEntity<Avaliacao> findBySolicitacaoServico(
+            @PathVariable Long solicitacaoId) {
+
+        return avaliacaoService.findBySolicitacaoServicoId(solicitacaoId)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.noContent().build());
+    }
+
     @PostMapping
     public ResponseEntity<Avaliacao> save(@RequestBody Avaliacao avaliacao) {
         return ResponseEntity.status(HttpStatus.CREATED).body(avaliacaoService.save(avaliacao));

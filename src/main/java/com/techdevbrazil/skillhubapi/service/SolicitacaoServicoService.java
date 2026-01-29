@@ -1,6 +1,7 @@
 package com.techdevbrazil.skillhubapi.service;
 
 import com.techdevbrazil.skillhubapi.entity.SolicitacaoServico;
+import com.techdevbrazil.skillhubapi.enums.StatusSolicitacao;
 import com.techdevbrazil.skillhubapi.repository.SolicitacaoServicoRepository;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,12 @@ public class SolicitacaoServicoService {
 
     public SolicitacaoServico save(SolicitacaoServico solicitacaoServico) {
         return solicitacaoServicoRepository.save(solicitacaoServico);
+    }
+
+    public SolicitacaoServico updateStatus(Long id, StatusSolicitacao status) {
+        SolicitacaoServico solicitacao = findById(id);
+        solicitacao.setStatus(status);
+        return solicitacaoServicoRepository.save(solicitacao);
     }
 
     public void delete(Long id) {
