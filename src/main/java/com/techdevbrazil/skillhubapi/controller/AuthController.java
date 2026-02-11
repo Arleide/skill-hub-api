@@ -2,6 +2,7 @@ package com.techdevbrazil.skillhubapi.controller;
 
 import com.techdevbrazil.skillhubapi.dto.JwtResponse;
 import com.techdevbrazil.skillhubapi.dto.LoginRequest;
+import com.techdevbrazil.skillhubapi.dto.RefreshTokenRequest;
 import com.techdevbrazil.skillhubapi.dto.RegisterRequest;
 import com.techdevbrazil.skillhubapi.service.AuthService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -34,4 +35,10 @@ public class AuthController {
         authService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @PostMapping("/refresh")
+    public JwtResponse refresh(@RequestBody RefreshTokenRequest request) {
+        return authService.refreshToken(request);
+    }
+
 }

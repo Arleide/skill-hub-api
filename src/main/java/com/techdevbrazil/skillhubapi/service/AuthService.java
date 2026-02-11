@@ -2,6 +2,7 @@ package com.techdevbrazil.skillhubapi.service;
 
 import com.techdevbrazil.skillhubapi.dto.JwtResponse;
 import com.techdevbrazil.skillhubapi.dto.LoginRequest;
+import com.techdevbrazil.skillhubapi.dto.RefreshTokenRequest;
 import com.techdevbrazil.skillhubapi.dto.RegisterRequest;
 import com.techdevbrazil.skillhubapi.entity.RefreshToken;
 import com.techdevbrazil.skillhubapi.entity.Usuario;
@@ -24,6 +25,7 @@ public class AuthService {
     private final LoginHistoryService loginHistoryService;
     private final UsuarioRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
 
     public JwtResponse login(LoginRequest request) {
 
@@ -57,5 +59,24 @@ public class AuthService {
         user.setAtivo(Boolean.TRUE);
         userRepository.save(user);
     }
+
+    public JwtResponse refreshToken(RefreshTokenRequest request) {
+
+        RefreshToken refreshToken =
+                refreshTokenService.validate(request.refreshToken());
+
+        Usuario user = userRepository.findById(refreshToken.getUserId()).orElse(null);
+
+        CustomUserDetails userDetails = new CustomUserDetails(user);
+
+        String newAccessToken = jwtService.generateToken(userDetails);
+
+        return new JwtResponse(
+                newAccessToken,
+                refreshToken.getToken()
+        );
+    }
+
+
 }
 

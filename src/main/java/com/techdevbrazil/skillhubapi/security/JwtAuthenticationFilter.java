@@ -31,10 +31,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             FilterChain filterChain
     ) throws ServletException, IOException {
 
+
         String authHeader = request.getHeader("Authorization");
 
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            String token = authHeader.substring(7);
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        String token = authHeader.substring(7);
+
+        try {
+
             String email = Jwts.parserBuilder()
                     .setSigningKey(jwtService.getKey())
                     .build()
@@ -50,6 +58,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                             userDetails, null, userDetails.getAuthorities());
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        } catch (io.jsonwebtoken.ExpiredJwtException e) {
+            // Token expirado → não autentica
+            SecurityContextHolder.clearContext();
+        } catch (Exception e) {
+            // Token inválido
+            SecurityContextHolder.clearContext();
         }
 
         filterChain.doFilter(request, response);
